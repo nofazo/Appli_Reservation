@@ -1,0 +1,48 @@
+<?php
+
+if(!isset($_SESSION))
+{
+	session_start();
+
+	if (isset($_POST['bouton']))
+	{
+		$_SESSION['place'] = $_POST['place'];
+		$_SESSION['destination'] = $_POST['destination'];
+
+		if (isset($_POST['assurance']))
+			$_SESSION['assurance'] = "checked";
+		else
+			$_SESSION['assurance'] = "uncheked";   
+	}
+}
+
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Passager 1</title>
+</head>
+<body>
+	<h1>Passager 1</h1>
+
+</body>
+<form action="Validation.php" method="post">
+	<fieldset>
+		<legend>Vos coordonnées</legend>
+		<label>Nom</label>
+			<input type="text" name="Nom"> </br> </br>
+		<label>Prénom</label>
+			<input type="text" name="Prénom"> </br> </br>
+		<label>Age</label>
+			<input type="text" name="Age"> </br> </br>  <!--Penser à laisser un plus grand espace entre les label et les input pour que tout soit alligné-->
+	</fieldset>
+
+	<input type="submit" value="Etape suivante" name="bouton2">
+	<input type="button" value="Retour à la page précédente" onClick="history.go(-1)"> <!-- ou onclick = "window.history.back()"-->
+	<input type="reset" value="Annuler la réservation">      <!-- on redirigera vers une page d'accueil, se fera comme : <input type="button" value="Accueil" OnClick="window.location.href=\'http://www..." />, sinon avec form -->
+
+</form>
+
+
+</html>
