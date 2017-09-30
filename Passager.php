@@ -5,7 +5,7 @@ if(!isset($_SESSION))
 	session_start();
 
 	if (isset($_POST['bouton']))
-	{
+	{	
 		$_SESSION['place'] = $_POST['place'];
 		$_SESSION['destination'] = $_POST['destination'];
 
@@ -13,7 +13,12 @@ if(!isset($_SESSION))
 			$_SESSION['assurance'] = "checked";
 		else
 			$_SESSION['assurance'] = "uncheked";   
+
+		$_SESSION['Nom'];
+		$_SESSION['Prénom'];
+		$_SESSION['Age'];
 	}
+
 }
 
 
@@ -42,7 +47,7 @@ if(!isset($_SESSION))
 
 	<input type="submit" value="Etape suivante" name="bouton2">
 	<input type="button" value="Retour à la page précédente" onclick='history.go(-1)' > <!-- ou onclick = "window.history.back()"-->
-	<input type="reset" value="Annuler la réservation">      <!-- on redirigera vers une page d'accueil, se fera comme : <input type="button" value="Accueil" OnClick="window.location.href=\'http://www..." />, sinon avec form -->
+	<input type="button" value="Annuler la réservation" onclick="history.go(-2)">      <!-- on redirigera vers une page d'accueil, se fera comme : <input type="button" value="Accueil" OnClick="window.location.href=\'http://www..." />, sinon avec form -->
 
 </form>
 

@@ -33,7 +33,7 @@ if(!isset($_SESSION))
 		</fieldset>
 		<input type="submit" value="Etape suivante" name="bouton" />
 		<!-- <a href="http://localhost/Appli_Reservation/Passager.php"><input type="button" value="autre manière"></a> --> 
-		<input type="reset" value="Annuler la réservation">
+		<input type="button" value="Annuler la réservation" onclick="history.go(-1)">
 	<FORM/>	
 
 	

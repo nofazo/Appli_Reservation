@@ -10,6 +10,6 @@
 	</p>
 </body>
 <form>
-	<input type="button"  value="Retour à la page d'accueil" onClick="history.go(-3)"> <!-- history.go pas fiable, revoir autre technique-->
+	<input type="button"  value="Retour à la page d'accueil" onClick="history.go(-4)"> <!-- history.go pas fiable, revoir autre technique-->
 </form>
 </html>
