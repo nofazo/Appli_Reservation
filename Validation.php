@@ -1,5 +1,4 @@
 <?php
-session_cache_limiter('private_no_expire, must-revalidate');
 if(!isset($_SESSION))
 {	
 	session_start();
@@ -49,6 +48,7 @@ if(!isset($_SESSION))
 	</fieldset>
 
 	<input type="submit" value="Etape suivante">
+	<input type="button" value = "Modifier ma réservation" onclick="history.go(-1)">
 </form>
 </body>
 </html>

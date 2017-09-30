@@ -1,8 +1,9 @@
 <?php
-	if(!isset($_SESSION)) 
-	{
-		session_start();
-	}
+session_cache_limiter('private_no_expire, must-revalidate');
+if(!isset($_SESSION)) 
+{
+	session_start();
+}
 ?>
 
 <html>
