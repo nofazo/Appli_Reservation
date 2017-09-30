@@ -1,4 +1,5 @@
 <?php
+session_cache_limiter('private_no_expire, must-revalidate');
 if(!isset($_SESSION))
 {	
 	session_start();
@@ -46,7 +47,8 @@ if(!isset($_SESSION))
 
 		
 	</fieldset>
-	
+
+	<input type="submit" value="Etape suivante">
 </form>
 </body>
 </html>
