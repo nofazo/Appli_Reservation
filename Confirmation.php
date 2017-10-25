@@ -19,6 +19,6 @@ if(!isset($_SESSION))
 	</p>
 </body>
 <form>
-	<input type="button"  value="Retour à la page d'accueil" onclick="onclick = "window.history.back()"" > <!-- history.go pas fiable, revoir autre technique-->
+	<input type="button"  value="Retour à la page d'accueil" onclick="history.go(-4)" > <!-- history.go pas fiable, revoir autre technique-->
 </form>
 </html>

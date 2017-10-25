@@ -48,7 +48,7 @@ if(!isset($_SESSION))
 	</fieldset>
 
 	<input type="submit" value="Etape suivante">
-	<input type="button" value = "Modifier ma réservation" name="modification" onclick="onclick = "window.history.back()"">
+	<input type="button" value = "Modifier ma réservation" name="modification" onclick="history.go(-1)">
 </form>
 </body>
 </html>
