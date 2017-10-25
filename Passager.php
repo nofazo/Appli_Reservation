@@ -47,7 +47,7 @@ if(!isset($_SESSION))
 
 	<input type="submit" value="Etape suivante" name="bouton2">
 	<input type="button" value="Retour à la page précédente" onclick='history.go(-1)' > <!-- ou onclick = "window.history.back()"-->
-	<input type="button" value="Annuler la réservation" onclick="history.go(-2)">      <!-- on redirigera vers une page d'accueil, se fera comme : <input type="button" value="Accueil" OnClick="window.location.href=\'http://www..." />, sinon avec form -->
+	<input type="button" value="Annuler la réservation" onclick="onclick = "window.history.back()"">      <!-- on redirigera vers une page d'accueil, se fera comme : <input type="button" value="Accueil" OnClick="window.location.href=\'http://www..." />, sinon avec form -->
 
 </form>
 
