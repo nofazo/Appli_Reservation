@@ -14,9 +14,6 @@ if(!isset($_SESSION))
 		else
 			$_SESSION['assurance'] = "uncheked";   
 
-		$_SESSION['Nom'];
-		$_SESSION['Prénom'];
-		$_SESSION['Age'];
 	}
 
 }
