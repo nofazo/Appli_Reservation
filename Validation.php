@@ -2,15 +2,6 @@
 if(!isset($_SESSION))
 {	
 	session_start();
-
-	
-	if (isset($_POST['bouton2']))
-	{
-		$_SESSION['Nom'] = $_POST['Nom'];
-		$_SESSION['Prénom'] = $_POST['Prénom'];
-		$_SESSION['Age'] = $_POST['Age'];
-
-	}
 }
 ?>
 

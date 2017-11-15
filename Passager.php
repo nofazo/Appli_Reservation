@@ -4,18 +4,6 @@ if(!isset($_SESSION))
 {
 	session_start();
 
-	if (isset($_POST['bouton']))
-	{	
-		$_SESSION['place'] = $_POST['place'];
-		$_SESSION['destination'] = $_POST['destination'];
-
-		if (isset($_POST['assurance']))
-			$_SESSION['assurance'] = "checked";
-		else
-			$_SESSION['assurance'] = "uncheked";   
-
-	}
-
 }
 
 
@@ -31,7 +19,7 @@ if(!isset($_SESSION))
 	<h1>Passager 1</h1>
 
 </body>
-<form action="Validation.php" method="post">
+<form action="Controller.php" method="post">
 	<fieldset>
 		<legend>Vos coordonnées</legend>
 		<label>Nom</label>
