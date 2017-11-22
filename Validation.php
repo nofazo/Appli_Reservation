@@ -16,9 +16,9 @@ if(!isset($_SESSION))
 	<fieldset>
 		<legend>informations</legend>
 		<label>Nom: </label>
-			<label> <?php echo htmlspecialchars($_SESSION['Nom']); ?> </label> </br>
+			<label> <?php echo htmlspecialchars($_SESSION['LastName']); ?> </label> </br>
 		<label>Prénom: </label>
-			<label> <?php echo htmlspecialchars($_SESSION['Prénom']); ?> </label> </br>
+			<label> <?php echo htmlspecialchars($_SESSION['FirstName']); ?> </label> </br>
 		<label>Age: </label>
 			<label> <?php echo htmlspecialchars($_SESSION['Age']); ?> </label> </br>
 		<label>Destination: </label>
@@ -28,7 +28,7 @@ if(!isset($_SESSION))
 		<label>Assurance annulation: </label>
 			<label>
 				<?php 
-				 	if ($_SESSION['assurance'] === "checked")
+				 	if ($_SESSION['insurance'] === "checked")
 						echo "OUI";
 					else
 						echo "NON";

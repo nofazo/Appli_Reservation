@@ -3,26 +3,21 @@ if(!isset($_SESSION))
 {
 	session_start();
 
-	if (isset($_POST['bouton']))
+	if (isset($_POST['button']))
 	{	
 		$_SESSION['place'] = $_POST['place'];
 		$_SESSION['destination'] = $_POST['destination'];
 
-		if (isset($_POST['assurance']))
-			$_SESSION['assurance'] = "checked";
+		if (isset($_POST['insurance']))
+			$_SESSION['insurance'] = "checked";
 		else
-			$_SESSION['assurance'] = "uncheked";   
+			$_SESSION['insurance'] = "uncheked";   
 
 		//$place = $_SESSION['place'] ;
 		//$destination = $_SESSION['destination'];
 		//$assurance = $_SESSION['assurance'];
-		$place = $_SESSION['place'] ;          // les deux valeurs sont différentes
-		
-
-		//while ( $place != 0) 
-		//{
-			
-		//}
+		$place = $_SESSION['place'] ;
+		$place += 1 ;
 
 
 
@@ -31,10 +26,10 @@ if(!isset($_SESSION))
 
 
 
-	if (isset($_POST['bouton2']))
+	if (isset($_POST['button2']))
 	{
-		$_SESSION['Nom'] = $_POST['Nom'];
-		$_SESSION['Prénom'] = $_POST['Prénom'];
+		$_SESSION['LastName'] = $_POST['LastName'];
+		$_SESSION['FirstName'] = $_POST['FirstName'];
 		$_SESSION['Age'] = $_POST['Age'];
 
 		//$Nom = $_SESSION['Nom'];
@@ -44,8 +39,6 @@ if(!isset($_SESSION))
 		header("Location: Validation.php");
 
 	}
-
-	//Boucle passager : 
 
 
 }

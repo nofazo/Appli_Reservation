@@ -29,9 +29,9 @@ if(!isset($_SESSION))
 			<label>Nombre de places</label>
 				<input type="text" name="place" > </br>
 			<label> Assurance annulation</label>
-				<input type="checkbox" name="assurance" ></br>	
+				<input type="checkbox" name="insurance" ></br>	
 		</fieldset>
-		<input type="submit" value="Etape suivante" name="bouton" />
+		<input type="submit" value="Etape suivante" name="button" />
 		<!-- <a href="http://localhost/Appli_Reservation/Passager.php"><input type="button" value="autre manière"></a> --> 
 		<input type="button" value="Annuler la réservation" onclick="history.go(-1)">
 	<FORM/>	
