@@ -30,6 +30,15 @@ class Passager
 	{
 		return $this->firstName;
 	}
+	public function setAge($age)
+	{
+		return $this->age;
+	}
+	public function GetAge()
+	{
+		return $this->age;
+	}
+
 }
 
 /**
