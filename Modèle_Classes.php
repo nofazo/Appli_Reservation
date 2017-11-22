@@ -26,7 +26,7 @@ class Reservation
 	public $assurance;
 
 	
-	function __construct($destination, $place, $assurance)
+	public function __construct($destination, $place, $assurance)
 	{
 		$this -> destination = $destination;
 		$this -> place = $place ;
