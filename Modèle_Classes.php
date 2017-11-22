@@ -4,15 +4,31 @@
 */
 class Passager
 {
-	public $nom;
-	public $prenom;
-	public $age;
+	private $lastName;
+	private $firstName;
+	private $age;
 	
-	public function __construct($nom, $prenom, $age)  // encapsulation à changer (pas celle du constructeur car toujours public)
+	public function __construct($lastName, $firstName, $age)  // encapsulation à changer (pas celle du constructeur car toujours public)
 	{
-		$this -> nom = $nom;
-		$this -> prenom = $prenom;
+		$this -> lastName = $lastName;
+		$this -> firstName = $firstName;
 		$this -> age = $age;
+	}
+	public function setLastName($lastName)
+	{
+		return $this->lastName;
+	}
+	public function getLastName()
+	{
+		return $this->lastName;
+	}
+	public function setFirstName($firstName)
+	{
+		return $this->firstName;
+	}
+	public function getFirstName()
+	{
+		return $this->firstName;
 	}
 }
 
@@ -23,14 +39,14 @@ class Reservation
 {
 	public $destination;
 	public $place;
-	public $assurance;
+	public $insurance;
 
 	
-	public function __construct($destination, $place, $assurance)
+	public function __construct($destination, $place, $insurance)
 	{
 		$this -> destination = $destination;
 		$this -> place = $place ;
-		$this -> assurance = $assurance ;
+		$this -> insurance = $insurance ;
 	}
 	public function setDestination($destination) 
 	{ 
@@ -50,9 +66,9 @@ class Reservation
 	{ 
 	   return $this->places; 
 	}
-	public function getAssurance() 
+	public function getInsurance() 
 	{ 
-		if($this->assurance)
+		if($this->insurance)
 		{
 			return 'OUI';
 		}
@@ -62,9 +78,9 @@ class Reservation
 		}
 	}
 	
-	public function setAssurance($assurance) 
+	public function setInsurance($insurance) 
 	{
-		$this->assurance = $assurance;
+		$this->insurance = $insurance;
 	}
 }
 ?>
