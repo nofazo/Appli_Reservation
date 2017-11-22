@@ -4,9 +4,9 @@
 */
 class Passager
 {
-	public $nom;
-	public $prenom;
-	public $age;
+	private $nom;
+	private $prenom;
+	private $age;
 	
 	public function __construct($nom, $prenom, $age)  // encapsulation à changer (pas celle du constructeur car toujours public)
 	{
@@ -21,9 +21,9 @@ class Passager
 */
 class Reservation
 {
-	public $destination;
-	public $place;
-	public $assurance;
+	private $destination;
+	private $place;
+	private $assurance;
 
 	
 	public function __construct($destination, $place, $assurance)

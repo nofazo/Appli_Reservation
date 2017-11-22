@@ -16,13 +16,14 @@ if(!isset($_SESSION))
 		//$place = $_SESSION['place'] ;
 		//$destination = $_SESSION['destination'];
 		//$assurance = $_SESSION['assurance'];
-		$place = $_SESSION['place'] ;
-		$place += 1 ;
+		$place = $_SESSION['place'] ;          // les deux valeurs sont différentes
+		
 
-		while ( $place != 0) 
-		{
+		//while ( $place != 0) 
+		//{
 			
-		}
+		//}
+
 
 
 		header("Location: Passager.php");
