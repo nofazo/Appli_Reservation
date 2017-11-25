@@ -19,8 +19,6 @@ if(!isset($_SESSION))
 		$place = $_SESSION['place'] ;
 		$place += 1 ;
 
-
-
 		header("Location: Passager.php");
 	}
 
@@ -38,6 +36,11 @@ if(!isset($_SESSION))
 
 		header("Location: Validation.php");
 
+	}
+
+	if ()
+	{
+		header("Location: Reservation.php")
 	}
 
 

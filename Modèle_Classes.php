@@ -14,31 +14,36 @@ class Passager
 		$this -> firstName = $firstName;
 		$this -> age = $age;
 	}
+
 	public function setLastName($lastName)
 	{
 		return $this->lastName;
 	}
+
 	public function getLastName()
 	{
 		return $this->lastName;
 	}
+
 	public function setFirstName($firstName)
 	{
 		return $this->firstName;
 	}
+
 	public function getFirstName()
 	{
 		return $this->firstName;
 	}
+
 	public function setAge($age)
 	{
 		return $this->age;
 	}
+
 	public function GetAge()
 	{
 		return $this->age;
 	}
-
 }
 
 /**
@@ -57,6 +62,7 @@ class Reservation
 		$this -> place = $place ;
 		$this -> insurance = $insurance ;
 	}
+
 	public function setDestination($destination) 
 	{ 
 	   $this->destination = $destination; 
@@ -66,6 +72,7 @@ class Reservation
 	{ 
 	   return $this->destination; 
 	}
+
 	public function setPlace($place) 
 	{ 
 	   $this->places = $places; 
@@ -75,7 +82,8 @@ class Reservation
 	{ 
 	   return $this->places; 
 	}
-	public function getInsurance() 
+
+	public function getInsurance() // à revoir 
 	{ 
 		if($this->insurance)
 		{
@@ -87,7 +95,7 @@ class Reservation
 		}
 	}
 	
-	public function setInsurance($insurance) 
+	public function setInsurance($insurance) // à revoir
 	{
 		$this->insurance = $insurance;
 	}

@@ -1,14 +1,59 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Page d'accueil</title>
-</head>
-<body>
-	<h1>Bienvenue chez Royal Air Maroc !</h1>
-</body>
-<form action = "Reservation.php" >
-	<p>Une envie de changer d'air? Un voyage d'affaire? N'hésitez plus une seconde à consulter nos meilleurs offres !</p>
-	<input type="submit" value="Réserver" >
- </form>
+<?php 
+session_start(); 
 
-</html>
+if(isset($_SESSION['object']))
+{
+	$reservation = unserialize($_SESSION['object']);  // on supprime l'objet s'il existe (provenant d'une session précédente)
+}
+
+
+
+if (isset($_POST['button']))
+{	
+	$_SESSION['place'] = $_POST['place'];
+	$_SESSION['destination'] = $_POST['destination'];
+
+	if (isset($_POST['insurance']))
+		$_SESSION['insurance'] = "checked";
+	else
+		$_SESSION['insurance'] = "uncheked";   
+
+	//$place = $_SESSION['place'] ;
+	//$destination = $_SESSION['destination'];
+	//$assurance = $_SESSION['assurance'];
+	$place = $_SESSION['place'] ;
+	$place += 1 ;
+
+	header("Location: Passager.php");
+}
+
+
+
+if (isset($_POST['button2']))
+{
+	$_SESSION['LastName'] = $_POST['LastName'];
+	$_SESSION['FirstName'] = $_POST['FirstName'];
+	$_SESSION['Age'] = $_POST['Age'];
+
+	//$Nom = $_SESSION['Nom'];
+	//$Prénom = $_SESSION['Prénom'];
+	//$Age = $_SESSION['Age'];
+
+	header("Location: Validation.php");
+
+}
+
+
+
+if (!empty($_GET['page']) && is_file('Controller_'.$_GET['page'].'.php'))
+{
+	include 'Controller_'.$_GET['page'].'.php';
+}
+else
+{
+	include 'Accueil.php';
+}
+
+//$_SESSION['object'] = serialize($reservation); // on enrejistre l'objet
+
+?>
