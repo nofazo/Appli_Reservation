@@ -18,7 +18,7 @@ if(!isset($_SESSION))
 	<h1>Passager 1</h1>
 
 </body>
-<form action="index.php?page=Validation" method="post">
+<form action="index.php?page=Passager" method="post">
 	<fieldset>
 		<legend>Vos coordonnées</legend>
 		<label>Nom</label>

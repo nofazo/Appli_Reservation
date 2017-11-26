@@ -10,9 +10,9 @@ class Passager
 	
 	public function __construct($lastName, $firstName, $age)  // encapsulation à changer (pas celle du constructeur car toujours public)
 	{
-		$this -> lastName = $lastName;
-		$this -> firstName = $firstName;
-		$this -> age = $age;
+		$this->lastName = $lastName;
+		$this->firstName = $firstName;
+		$this->age = $age;
 	}
 
 	public function setLastName($lastName)
@@ -51,16 +51,16 @@ class Passager
 */
 class Reservation
 {
-	public $destination;
-	public $place;
-	public $insurance;
+	private $destination;
+	private $place;
+	private $insurance;
 
 	
 	public function __construct($destination, $place, $insurance)
 	{
-		$this -> destination = $destination;
-		$this -> place = $place ;
-		$this -> insurance = $insurance ;
+		$this->destination = $destination;
+		$this->place = $place ;
+		$this->insurance = $insurance ;
 	}
 
 	public function setDestination($destination) 

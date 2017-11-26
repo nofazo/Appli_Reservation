@@ -1,4 +1,0 @@
-<?php
-
-include 'Validation.php';
-?>

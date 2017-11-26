@@ -15,7 +15,7 @@ if(!isset($_SESSION))
  	 <p>Le prix de la place est de 10 euros jusqu'à 12 ans et ensuite de 15 euros. </br> Le prix de l'assurance annulation est de 20 euros quel que soit le nombre de voyageurs.</p>
 	</body>
 	<!--Formulaire qui va appeler Passenger.php en cliquant sur Etape suivante-->
-	<FORM action ="index.php?page=Passager" method="post" >
+	<FORM action ="index.php?page=Reservation" method="post" >
 		<fieldset>
 			<legend>Veuillez saisir les informations</legend>
 			<label>Destination</label>
