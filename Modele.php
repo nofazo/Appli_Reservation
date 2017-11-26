@@ -15,27 +15,27 @@ class Passager
 		$this->age = $age;
 	}
 
-	public function setLastName($lastName)
+	public function SetLastName($lastName)
 	{
 		return $this->lastName;
 	}
 
-	public function getLastName()
+	public function GetLastName()
 	{
 		return $this->lastName;
 	}
 
-	public function setFirstName($firstName)
+	public function SetFirstName($firstName)
 	{
 		return $this->firstName;
 	}
 
-	public function getFirstName()
+	public function GetFirstName()
 	{
 		return $this->firstName;
 	}
 
-	public function setAge($age)
+	public function SetAge($age)
 	{
 		return $this->age;
 	}
@@ -54,36 +54,38 @@ class Reservation
 	private $destination;
 	private $place;
 	private $insurance;
+	private $array_Pass = array();
 
 	
-	public function __construct($destination, $place, $insurance)
+	public function __construct($destination, $place, $insurance,$array_Pass)
 	{
 		$this->destination = $destination;
 		$this->place = $place ;
 		$this->insurance = $insurance ;
+		$this->array_Pass = $array_Pass;
 	}
 
-	public function setDestination($destination) 
+	public function SetDestination($destination) 
 	{ 
 	   $this->destination = $destination; 
 	}
 
-	public function getDestination() 
+	public function GetDestination() 
 	{ 
 	   return $this->destination; 
 	}
 
-	public function setPlace($place) 
+	public function SetPlace($place) 
 	{ 
-	   $this->places = $places; 
+	   $this->place = $place; 
 	}
 
-	public function getPlace() 
+	public function GetPlace() 
 	{ 
-	   return $this->places; 
+	   return $this->place; 
 	}
 
-	public function getInsurance() // à revoir 
+	public function GetInsurance() 
 	{ 
 		if($this->insurance)
 		{
@@ -95,9 +97,28 @@ class Reservation
 		}
 	}
 	
-	public function setInsurance($insurance) // à revoir
+	public function SetInsurance($insurance) 
 	{
 		$this->insurance = $insurance;
 	}
+
+	public function AddPass($passager)
+	{
+		array_push($this->array_Pass, $passager);   // comprendre pourquoi marche qu'avec $this->array_Pass et non $array_Pass
+	}
+
+	public function GetLengthPass()
+	{
+		return count($this->array_Pass);
+	}
+
+	public function GetArray()
+	{
+		return $this->array_Pass;
+	}
 }
+
+/**
+* 
+*/
 ?>

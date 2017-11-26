@@ -28,7 +28,7 @@ if(!isset($_SESSION))
 		<label>Assurance annulation: </label>
 			<label>
 				<?php 
-				 	if ($_SESSION['insurance'] === "checked")
+				 	if ($_SESSION['insurance'] === "TRUE")
 						echo "OUI";
 					else
 						echo "NON";
