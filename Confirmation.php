@@ -2,6 +2,8 @@
 if(!isset($_SESSION))
 {	
 	session_start();
+	include "Modele.php";
+	$reservation = unserialize($_SESSION['reservation']);
 }
 ?>
 
@@ -13,7 +15,7 @@ if(!isset($_SESSION))
 <body>
 	<h1>Confirmation des réservations</h1>
 	<p>Votre demande a bien été enrejistrée. </br>
-	   Merci de bien vouloir verser la somme de 2500 euros sur le compte 000-00000-00
+	   Merci de bien vouloir verser la somme de <?php echo ($reservation->GetTotalPrice()) ?> euros sur le compte 000-00000-00.
 	</p>
 </body>
 <form>

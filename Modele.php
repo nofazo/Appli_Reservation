@@ -15,29 +15,14 @@ class Passager
 		$this->age = $age;
 	}
 
-	public function SetLastName($lastName)
-	{
-		return $this->lastName;
-	}
-
 	public function GetLastName()
 	{
 		return $this->lastName;
 	}
 
-	public function SetFirstName($firstName)
-	{
-		return $this->firstName;
-	}
-
 	public function GetFirstName()
 	{
 		return $this->firstName;
-	}
-
-	public function SetAge($age)
-	{
-		return $this->age;
 	}
 
 	public function GetAge()
@@ -55,29 +40,21 @@ class Reservation
 	private $place;
 	private $insurance;
 	private $array_Pass = array();
+	private $price ;
 
 	
-	public function __construct($destination, $place, $insurance,$array_Pass)
+	public function __construct($destination, $place, $insurance,$array_Pass,$price)
 	{
 		$this->destination = $destination;
 		$this->place = $place ;
 		$this->insurance = $insurance ;
 		$this->array_Pass = $array_Pass;
-	}
-
-	public function SetDestination($destination) 
-	{ 
-	   $this->destination = $destination; 
+		$this->price = $price ;
 	}
 
 	public function GetDestination() 
 	{ 
 	   return $this->destination; 
-	}
-
-	public function SetPlace($place) 
-	{ 
-	   $this->place = $place; 
 	}
 
 	public function GetPlace() 
@@ -96,15 +73,10 @@ class Reservation
 			return 'NON';
 		}
 	}
-	
-	public function SetInsurance($insurance) 
-	{
-		$this->insurance = $insurance;
-	}
 
 	public function AddPass($passager)
 	{
-		array_push($this->array_Pass, $passager);   // comprendre pourquoi marche qu'avec $this->array_Pass et non $array_Pass
+		array_push($this->array_Pass, $passager);
 	}
 
 	public function GetLengthPass()
@@ -120,6 +92,52 @@ class Reservation
 	public function Reset_Pass()
 	{
 		$this->array_Pass = array();
+	}
+
+	public function GetPrice()  // va servir pour un tableau des destinations et prix à renseigner au client
+	{
+		return $this->price;
+	}
+
+	public function GetNumberAdult()
+	{
+		$pass = 0;
+		foreach ($this->array_Pass as $passager) 
+		{
+			if ($passager->GetAge() > 12)
+			{
+				$pass += 1 ;
+			}
+		}
+		return $pass;
+	}
+
+	public function GetNumberChild()
+	{
+		$child = 0;
+		foreach ($this->array_Pass as $children) 
+		{
+			if ($children->GetAge() < 12)
+			{
+				$child += 1 ;
+			}
+		}
+		return $child;
+	}
+
+	public function GetTotalPrice()
+	{	
+		if ($this->GetInsurance() === 'OUI')
+		{
+			$totalPrice = ($this->GetNumberAdult() * $this->price) + ($this->GetNumberChild() * 0.5 * $this->price) + 30;
+			return $totalPrice;
+		}
+
+		else
+		{
+			$totalPrice = ($this->GetNumberAdult() * $this->price) + ($this->GetNumberChild() * 0.5 * $this->price) ;
+			return $totalPrice;
+		}
 	}
 }
 

@@ -11,7 +11,7 @@ if(!isset($_SESSION))
 	</head>
 	<body>
 	 <h1> Nouvelle réservation </h1>
- 	 <p>Le prix de la place est de 10 euros jusqu'à 12 ans et ensuite de 15 euros. </br> Le prix de l'assurance annulation est de 20 euros quel que soit le nombre de voyageurs.</p>
+ 	 <p>Réduction de -50% pour les voyageurs de moins de 12 ans. </br> Le prix de l'assurance annulation est de 30 euros quel que soit le nombre de voyageurs.</p>
 	</body>
 	<FORM action ="index.php?page=Reservation" method="post" >
 		<fieldset>
@@ -19,10 +19,13 @@ if(!isset($_SESSION))
 			<label>Destination</label>
 				<select name= "destination">
 					<option value = ""> ----Choisir---- </option>
-					<option value = "Belgique"> Bruxelles </option>
-					<option value = "Maroc"> Marrakech </option>
-					<option value = "Maroc"> Tanger </option>
-					<option value ="Royaume-Uni"> Londres </option>
+					<option value = "Marrakech"> Marrakech </option>
+					<option value = "Tanger"> Tanger </option>
+					<option value ="Londres"> Londres </option>
+					<option value = "Malaisie"> Malaisie </option>
+					<option value ="Chine"> Chine </option>
+					<option value = "Canada"> Canada </option>
+					<option value ="Hawaï"> Hawaï </option>
 				</select></br>
 			<label>Nombre de places</label>
 				<input type="text" name="place" > </br>
