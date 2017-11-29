@@ -1,22 +1,18 @@
 <?php
-session_cache_limiter('private_no_expire, must-revalidate');  // pour éviter l'erreur 'la page a expiré' lorsque l'on fait un retour en arrière
 if(!isset($_SESSION))
 {
 	session_start();
-
+	$reservation = unserialize($_SESSION['reservation']);
 }
-
-
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Passager 1</title>
+	<title>Passager <?php echo ($reservation->GetLengthPass()+1); ?> </title>
 </head>
 <body>
-	<h1>Passager 1</h1>
-
+	<h1>Passager <?php echo ($reservation->GetLengthPass()+1); ?> </h1>
 </body>
 <form action="index.php?page=Passager" method="post">
 	<fieldset>
@@ -30,8 +26,8 @@ if(!isset($_SESSION))
 	</fieldset>
 
 	<input type="submit" value="Etape suivante" name="button2">
-	<input type="button" value="Retour à la page précédente" onclick='history.go(-1)' > <!-- ou onclick = "window.history.back()"-->
-	<input type="button" value="Annuler la réservation" onclick="history.go(-2)">      <!-- on redirigera vers une page d'accueil, se fera comme : <input type="button" value="Accueil" OnClick="window.location.href=\'http://www..." />, sinon avec form -->
+	<input type="button" value="Retour à la page précédente" onclick="location.href='Reservation.php'" > 
+	<input type="button" value="Annuler la réservation" onclick="location.href='Accueil.php'"> 
 
 </form>
 

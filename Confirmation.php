@@ -3,8 +3,6 @@ if(!isset($_SESSION))
 {	
 	session_start();
 }
-
-//session_destroy(); ???
 ?>
 
 <!DOCTYPE html>
@@ -19,6 +17,6 @@ if(!isset($_SESSION))
 	</p>
 </body>
 <form>
-	<input type="button"  value="Retour à la page d'accueil" onclick="history.go(-4)" > <!-- history.go pas fiable, revoir autre technique-->
+	<input type="button"  value="Retour à la page d'accueil" onclick="location.href='Accueil.php'" > 
 </form>
 </html>

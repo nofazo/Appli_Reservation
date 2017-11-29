@@ -1,5 +1,4 @@
 <?php
-session_cache_limiter('private_no_expire, must-revalidate');
 if(!isset($_SESSION)) 
 {
 	session_start();
@@ -14,7 +13,6 @@ if(!isset($_SESSION))
 	 <h1> Nouvelle réservation </h1>
  	 <p>Le prix de la place est de 10 euros jusqu'à 12 ans et ensuite de 15 euros. </br> Le prix de l'assurance annulation est de 20 euros quel que soit le nombre de voyageurs.</p>
 	</body>
-	<!--Formulaire qui va appeler Passenger.php en cliquant sur Etape suivante-->
 	<FORM action ="index.php?page=Reservation" method="post" >
 		<fieldset>
 			<legend>Veuillez saisir les informations</legend>
@@ -32,8 +30,7 @@ if(!isset($_SESSION))
 				<input type="checkbox" name="insurance" ></br>	
 		</fieldset>
 		<input type="submit" value="Etape suivante" name="button" />
-		<!-- <a href="http://localhost/Appli_Reservation/Passager.php"><input type="button" value="autre manière"></a> --> 
-		<input type="button" value="Annuler la réservation" onclick="history.go(-1)">
+		<input type="button" value="Annuler la réservation" onclick="location.href='Accueil.php'">  <!--session lost with window.location.href -->
 	<FORM/>	
 
 	

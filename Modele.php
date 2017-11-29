@@ -8,7 +8,7 @@ class Passager
 	private $firstName;
 	private $age;
 	
-	public function __construct($lastName, $firstName, $age)  // encapsulation à changer (pas celle du constructeur car toujours public)
+	public function __construct($lastName, $firstName, $age)  
 	{
 		$this->lastName = $lastName;
 		$this->firstName = $firstName;
@@ -87,7 +87,7 @@ class Reservation
 
 	public function GetInsurance() 
 	{ 
-		if($this->insurance)
+		if($this->insurance === 'TRUE')
 		{
 			return 'OUI';
 		}
@@ -115,6 +115,11 @@ class Reservation
 	public function GetArray()
 	{
 		return $this->array_Pass;
+	}
+
+	public function Reset_Pass()
+	{
+		$this->array_Pass = array();
 	}
 }
 

@@ -2,9 +2,10 @@
 if(!isset($_SESSION))
 {	
 	session_start();
+	include "Modele.php";
+	$reservation = unserialize($_SESSION['reservation']);
 }
 ?>
-
 
 <!DOCTYPE html>
 <html>
@@ -15,31 +16,26 @@ if(!isset($_SESSION))
 <form action="Confirmation.php" method="post">
 	<fieldset>
 		<legend>informations</legend>
-		<label>Nom: </label>
-			<label> <?php echo htmlspecialchars($_SESSION['LastName']); ?> </label> </br>
-		<label>Prénom: </label>
-			<label> <?php echo htmlspecialchars($_SESSION['FirstName']); ?> </label> </br>
-		<label>Age: </label>
-			<label> <?php echo htmlspecialchars($_SESSION['Age']); ?> </label> </br>
 		<label>Destination: </label>
-			<label> <?php echo $_SESSION['destination']; ?> </label> </br>
+			<label> <?php echo $reservation->GetDestination(); ?> </label> </br>
 		<label>Nombre de passager(s): </label>
-			<label> <?php echo $_SESSION['place']; ?> </label> </br>
+			<label> <?php echo $reservation->GetPlace(); ?> </label> </br>
 		<label>Assurance annulation: </label>
-			<label>
-				<?php 
-				 	if ($_SESSION['insurance'] === "TRUE")
-						echo "OUI";
-					else
-						echo "NON";
-				   ?>
-			</label>
+			<label> <?php echo $reservation->GetInsurance(); ?> </label>
 
-		
+		<?php 
+		echo $_SESSION['dataPass']; 
+		?>
+
 	</fieldset>
 
 	<input type="submit" value="Etape suivante">
-	<input type="button" value = "Modifier ma réservation" name="modification" onclick="history.go(-1)">
+	<input type="button" value = "annuler la réservation" name="annulation" onclick="location.href='Accueil.php'">
 </form>
+
+<form action ="index.php?page=Passager" method="post"> 
+	<input type="submit" value = "retour à la page précédente" name="precedent" >
+</form>
+
 </body>
 </html>
