@@ -20,15 +20,32 @@ class Passager
 		return $this->lastName;
 	}
 
+	public function SetLastName($lastName)
+	{
+		$this->lastName = $lastName;
+	}
+
 	public function GetFirstName()
 	{
 		return $this->firstName;
 	}
 
+	public function SetFirstName($firstName)
+	{
+		$this->firstName = $firstName;
+	}
+
+
 	public function GetAge()
 	{
 		return $this->age;
 	}
+
+	public function SetAge($age)
+	{
+		$this->age = $age;
+	}
+
 }
 
 /**
@@ -89,9 +106,13 @@ class Reservation
 		return $this->array_Pass;
 	}
 
-	public function Reset_Pass()
+	public function SetPass($numberPass, $lastName, $firstName, $age)
 	{
-		$this->array_Pass = array();
+		$pass = $this->array_Pass[$numberPass]; // pour accéder au passager voulu
+		$pass->SetLastName($lastName);
+		$pass->SetFirstName($firstName);
+		$pass->SetAge($age);
+
 	}
 
 	public function GetPrice()  // va servir pour un tableau des destinations et prix à renseigner au client
