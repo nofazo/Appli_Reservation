@@ -37,12 +37,13 @@ if (isset($_POST['button']))
 	}
 
 
-	$reservation = new Reservation($_POST['destination'], $_POST['place'], $_POST['insurance'], array(), $price) ;  
+	$reservation = new Reservation($_POST['destination'], $_POST['place'], $_POST['insurance'], array(), $price) ;  // pas besoin de controller les entrées je le fais dans le html
 	$_SESSION['reservation'] = serialize($reservation) ;
 
-
-
+	$Msg_Error = ""; // pas d'erreur si tout va bien dans 'passager.php'
 	include 'Passager.php';
+	
+
 }
 
 

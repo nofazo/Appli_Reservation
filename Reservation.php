@@ -17,7 +17,7 @@ if(!isset($_SESSION))
 		<fieldset>
 			<legend>Veuillez saisir les informations</legend>
 			<label>Destination</label>
-				<select name= "destination">
+				<select name= "destination" required>
 					<option value = ""> ----Choisir---- </option>
 					<option value = "Marrakech"> Marrakech </option>
 					<option value = "Tanger"> Tanger </option>
@@ -28,7 +28,7 @@ if(!isset($_SESSION))
 					<option value ="Hawaï"> Hawaï </option>
 				</select></br>
 			<label>Nombre de places</label>
-				<input type="text" name="place" > </br>
+				<input type="number" name="place" min="1" max="11" required> </br> 
 			<label> Assurance annulation</label>
 				<input type="checkbox" name="insurance" ></br>	
 		</fieldset>

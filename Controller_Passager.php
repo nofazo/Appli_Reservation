@@ -4,25 +4,36 @@ $reservation = unserialize($_SESSION['reservation']);
 
 if (isset($_POST['button2']))
 {
+	$Msg_Error = "";
 	if ( $reservation->GetLengthPass() < $reservation->GetPlace())         
 	{
-		$passager = new Passager ($_POST['LastName'], $_POST['FirstName'], $_POST['Age']); 
+		if (preg_match("#[A-Za-z]+#", $_POST['LastName']) && preg_match("#[A-Za-z]+#", $_POST['FirstName']))
+		{
+			
+			$passager = new Passager ($_POST['LastName'], $_POST['FirstName'], $_POST['Age']); 
 
-		$reservation->AddPass($passager);  //ajout du passager ds le tableau
+			$reservation->AddPass($passager);  //ajout du passager ds le tableau
 
-		$_SESSION['reservation'] = serialize($reservation) ;
-	}
+			$_SESSION['reservation'] = serialize($reservation) ;
+			
 
-
-	if ( $reservation->GetLengthPass() < ($reservation->GetPlace()))  //màj liste (+1)
-	{
-		include 'Passager.php';
-	}
+			if ( $reservation->GetLengthPass() < ($reservation->GetPlace()))  //màj liste (+1)
+			{	
+				include 'Passager.php';
+			}
 	
-	else
-	{
-		include 'Controller_Validation.php'; 
-	}	
+			else
+			{	
+				include 'Controller_Validation.php'; 
+			}	
+		}
+
+		else
+		{
+			$Msg_Error= "Nom et/ou prénom incorrecte(s), veuillez recommencer.";
+			include 'Passager.php';
+		}
+	}
 }
 
 if (isset($_POST['precedent']))   
