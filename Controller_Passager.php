@@ -30,8 +30,17 @@ if (isset($_POST['button2']))
 			}
 	
 			else
-			{	
-				include 'Controller_Validation.php'; 
+			{
+				if ($reservation->Get18Years() == 0)	 
+				{
+					$Msg_Error = "Au moins un des passagers doit être âgé de minimum 18 ans.";
+					include 'Passager.php';
+				}
+				
+				else 
+				{
+					include 'Controller_Validation.php'; 
+				}
 			}	
 		}
 
@@ -60,7 +69,7 @@ if (isset($_POST['button2']))
 				$Age = $pass->GetAge();
 				include 'Passager.php';
 		    }
-		    
+
 		    else
 		    {
 		    	$Msg_Error= "Nom et/ou prénom incorrecte(s), veuillez recommencer.";

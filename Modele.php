@@ -133,6 +133,19 @@ class Reservation
 		return $pass;
 	}
 
+	public function Get18Years()
+	{
+		$pass = 0;
+		foreach ($this->array_Pass as $passager) 
+		{
+			if ($passager->GetAge() >= 18)
+			{
+				$pass += 1 ;
+			}
+		}
+		return $pass;
+	}
+
 	public function GetNumberChild()
 	{
 		$child = 0;
