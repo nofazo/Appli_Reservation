@@ -1,14 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Page d'accueil</title>
-</head>
-<body>
-	<h1>Bienvenue chez Royal Air Maroc !</h1>
-</body>
-<form action = "Reservation.php" >
-	<p>Une envie de changer d'air? Un voyage d'affaire? N'hésitez plus une seconde à consulter nos meilleurs offres !</p>
-	<input type="submit" value="Réserver" >
- </form>
+<?php 
 
-</html>
+session_start();
+
+if (!empty($_GET['page']) && is_file('Controller_'.$_GET['page'].'.php'))
+{
+	include 'Controller_'.$_GET['page'].'.php';
+}
+
+else
+{
+	include 'Accueil.php';
+}
+
+?>
