@@ -1,6 +1,7 @@
 <?php 
+if (!isset($_SESSION))
+	session_start();
 
-session_start();
 
 if (!empty($_GET['page']) && is_file('Controller_'.$_GET['page'].'.php'))
 {

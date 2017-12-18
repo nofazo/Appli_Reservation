@@ -1,9 +1,12 @@
 <?php
 include "Modele.php";
-$reservation = unserialize($_SESSION['reservation']);
+
+if (isset($_SESSION['reservation']))
+    $reservation = unserialize($_SESSION['reservation']);
 
 $Msg_Error="";
 
+// création et enrejistrement des passagers dans l'object réservation
 if (isset($_POST['button2']))
 {
 	$Msg_Error = "";
@@ -18,12 +21,12 @@ if (isset($_POST['button2']))
 			
 			$passager = new Passager ($_POST['LastName'], $_POST['FirstName'], $_POST['Age']); 
 
-			$reservation->AddPass($passager);  //ajout du passager ds le tableau
+			$reservation->AddPass($passager);
 
 			$_SESSION['reservation'] = serialize($reservation) ;
 			
 
-			if ( $reservation->GetLengthPass() < ($reservation->GetPlace()))  //màj liste (+1)
+			if ( $reservation->GetLengthPass() < ($reservation->GetPlace()))
 			{	
 				$_SESSION['LengthPass']= $reservation->GetLengthPass() + 1;
 				include 'Passager.php';
@@ -36,7 +39,7 @@ if (isset($_POST['button2']))
 					$Msg_Error = "Au moins un des passagers doit être âgé de minimum 18 ans.";
 					include 'Passager.php';
 				}
-				
+
 				else 
 				{
 					include 'Controller_Validation.php'; 
@@ -51,16 +54,16 @@ if (isset($_POST['button2']))
 		}
 	}
 
-	else   // dans le cas du precedent 
+
+	// code exécuté pour le reste des passagers lors d'un retour en arrière
+	else   
 	{
-		//modifier les variables d'instances ensuite qd on a fait le tour de toute la liste: renvoyer vers Controller_Validation.php ne pas oublier regex
-		if ($_SESSION['LengthPass'] < $reservation->GetPlace() )
+		if ($_SESSION['LengthPass'] < $reservation->GetPlace() )  // lengthpass : variable créée pour se repérer lors des retour en arrière
 		{	
 			if (preg_match("#[A-Za-z]+#", $_POST['LastName']) && preg_match("#[A-Za-z]+#", $_POST['FirstName']))
 			{
 				$reservation->SetPass($_SESSION['LengthPass']-1, $_POST['LastName'], $_POST['FirstName'], $_POST['Age']);
 				$_SESSION['reservation'] = serialize($reservation) ;
-
 			
 				$_SESSION['LengthPass'] ++;
 				$pass = $reservation->GetArray()[$_SESSION['LengthPass']-1];
@@ -74,19 +77,20 @@ if (isset($_POST['button2']))
 		    {
 		    	$Msg_Error= "Nom et/ou prénom incorrecte(s), veuillez recommencer.";
 				include 'Passager.php';
-		    }	
-			
+		    }		
 		}
 
+		// enrejistre la dernière modification 
 		else
 		{
-			$reservation->SetPass($_SESSION['LengthPass']-1, $_POST['LastName'], $_POST['FirstName'], $_POST['Age']);  // enrejistrer la dernière modification
+			$reservation->SetPass($_SESSION['LengthPass']-1, $_POST['LastName'], $_POST['FirstName'], $_POST['Age']); 
 			$_SESSION['reservation'] = serialize($reservation) ;
 			include 'Controller_Validation.php'; 
 		}
 	}
 }
 
+// code exécuté pour le 1er passager lors d'un retour en arrière
 if (isset($_POST['precedent']))   
 {
 	$_SESSION['LengthPass'] = 1;
@@ -96,7 +100,6 @@ if (isset($_POST['precedent']))
 	$LastName = $pass->GetLastName();
 	$FirstName = $pass->GetFirstName();
 	$Age = $pass->GetAge();
-
 
 	include 'Passager.php';
 }

@@ -1,9 +1,7 @@
 <?php
-if(!isset($_SESSION))
-{	
-	session_start();
-	$reservation = unserialize($_SESSION['reservation']);
-}
+
+$reservation = unserialize($_SESSION['reservation']);
+
 ?>
 
 <!DOCTYPE html>

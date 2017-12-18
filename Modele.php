@@ -1,7 +1,5 @@
 <?php
-/**
-* 
-*/
+
 class Passager
 {
 	private $lastName;
@@ -48,9 +46,7 @@ class Passager
 
 }
 
-/**
-* 
-*/
+
 class Reservation
 {
 	private $destination;
@@ -115,7 +111,7 @@ class Reservation
 
 	}
 
-	public function GetPrice()  // va servir pour un tableau des destinations et prix à renseigner au client
+	public function GetPrice()  
 	{
 		return $this->price;
 	}
@@ -196,7 +192,4 @@ class Reservation
 	}
 }
 
-/**
-* 
-*/
 ?>

@@ -1,8 +1,6 @@
 <?php
-if(!isset($_SESSION)) 
-{
-	session_start();
-}
+if (isset($id))
+	$_SESSION['id'] = $id ;
 ?>
 
 <html>
@@ -30,7 +28,7 @@ if(!isset($_SESSION))
 			<label>Nombre de places</label>
 				<input type="number" name="place" value="<?php echo $place; ?>" min="1" max="11" required> </br> 
 			<label> Assurance annulation</label>
-				<input type="checkbox" name="insurance" <?php if($insurance == 'OUI') echo "checked" ?> > </br>	
+				<input type="checkbox" name="insurance" <?php if($insurance === 'OUI') echo "checked" ?> > </br>	
 		</fieldset>
 		<input type="submit" value="Etape suivante" name="button" />
 		<input type="button" value="Annuler la réservation" onclick="location.href='Accueil.php'">  <!--session lost with window.location.href -->
