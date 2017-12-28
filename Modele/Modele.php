@@ -104,7 +104,7 @@ class Reservation
 
 	public function SetPass($numberPass, $lastName, $firstName, $age)
 	{
-		$pass = $this->array_Pass[$numberPass]; // pour accéder au passager voulu
+		$pass = $this->array_Pass[$numberPass]; // To access to the desired passenger
 		$pass->SetLastName($lastName);
 		$pass->SetFirstName($firstName);
 		$pass->SetAge($age);

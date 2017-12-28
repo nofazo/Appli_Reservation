@@ -1,10 +1,10 @@
 <?php
-include 'Modele.php';
+include 'Modele/Modele.php';
 
 if (isset($_SESSION['reservation']))
     $reservation = unserialize($_SESSION['reservation']);
 
-// Création de l'objet réservation
+// creation of the reservation object
 if (isset($_POST['button']) && (!isset($_SESSION['id'])))
 {	
 	$price = 0;
@@ -48,29 +48,27 @@ if (isset($_POST['button']) && (!isset($_SESSION['id'])))
 	$FirstName="";
 	$Age ="";
 	$Msg_Error = ""; 
-	include 'Passager.php';	
+	include 'View/Passager.php';	
 }
 
-//si l'utilisateur clique sur le bouton 'précédent'
+//if the user clicks on the 'previous' button
 if (isset($_POST['precedent'])) 
 {
 	$reservation = unserialize($_SESSION['reservation']);
 	$place = $reservation->GetPlace();
 	$insurance = $reservation->GetInsurance();
 	$destination = $reservation->GetDestination();
-	include 'Reservation.php';
+	include 'View/Reservation.php';
 }
 
 
-// si l'admin veut editer une réservation à partir de la base de données
+// if the admin wants to edit a reservation from the database
 if(isset($_SESSION['id'])) 
 {
 	if (isset($_POST['insurance']))
 		$_POST['insurance'] = "TRUE";
 	else
 		$_POST['insurance'] = "FALSE";  
-
-	var_dump($_SESSION);
 
 	switch ($_POST['destination']) 
 	{
@@ -114,7 +112,7 @@ if(isset($_SESSION['id']))
 
 	$id = $_SESSION['id'];
 
-	$reponse = $bdd->query('SELECT * FROM reservation WHERE id = $id');
+	$reponse = $bdd->query('SELECT * FROM reservation ');
 	while ($donnees = $reponse->fetch()) 
 	{
 		if ($donnees['id'] = $id)
@@ -126,10 +124,11 @@ if(isset($_SESSION['id']))
 		
 	}
 
+	//reconstruction of passenger objects
 	for ($i=0; $i < count($nameArray) ; $i++) 
 	{ 
-		$LastName = $nameArray[$i];
-		$FirstName = ' ';
+		$LastName = ' ';
+		$FirstName = $nameArray[$i];
 		$Age = $ageArray[$i];
 
 		$passager = new Passager ($LastName, $FirstName, $Age); 
@@ -140,21 +139,12 @@ if(isset($_SESSION['id']))
 
 	$_SESSION['LengthPass'] = 1;
 
-	$pass = $reservation->GetArray()[0];  // 1ere passager
+	$pass = $reservation->GetArray()[0];  // first passenger
 	$LastName = $pass->GetLastName();
 	$FirstName = $pass->GetFirstName();
 	$Age = $pass->GetAge();
 
 	$Msg_Error ="";
-	include 'Passager.php';
-
-
-	
-
-	//$sql = "UPDATE reservation SET nom='?', pseudo='?', sexe='?' WHERE id='?'";
-	//	$req = $bdd->prepare($sql);
-	//	$req->execute (array('id' => $id, 'nom' => $nom, 'pseudo' => $pseudo, 'sexe' => $sexe));
+	include 'View/Passager.php';
 }
-
-
 ?>

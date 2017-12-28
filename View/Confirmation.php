@@ -1,6 +1,5 @@
 <?php
 
-include 'Modele.php';
 $reservation = unserialize($_SESSION['reservation']);
 
 ?>
@@ -16,8 +15,9 @@ $reservation = unserialize($_SESSION['reservation']);
 	   Merci de bien vouloir verser la somme de <?php echo ($reservation->GetTotalPrice()) ?> euros sur le compte 000-00000-00.
 	</p>
 </body>
-
-	<input type="button"  value="Retour à la page d'accueil" onclick="location.href='Accueil.php'" > 
+<form method="post" action="index.php?page=Accueil">
+	<input type="submit"  value="Retour à la page d'accueil" name="Nouvelle_Reservation" > 
+</form>
 <form method="post" action="index.php?page=Admin">
 	<input type="submit"  value="Admin"  > 
 </form>

@@ -1,9 +1,9 @@
 <?php
-include 'Modele.php';
+include 'Modele/Modele.php';
 $reservation = unserialize($_SESSION['reservation']);
 
 
-//Connection à la base de données
+//Connection to the database
 $dbname = 'fazo';
 try
 {
@@ -16,7 +16,7 @@ try
     Insurance TEXT NOT NULL,
     Total INT(20),
     Name TEXT(50),
-    Age INT(50)
+    Age TEXT(50)
   )");
 
 }
@@ -33,16 +33,16 @@ $name = implode(',',  $reservation->GetArrayNames());
 $age =implode(',', $reservation->GetArrayAges());
 
 
-//Dans le cas où l'utilisateur modifie une réservation à l'aide du bouton 'edit' se trouvant dans la page admin
+//In case where the user modifies a reservation using the 'edit' button found in the admin page
 if ($_SESSION['Edit'] === "TRUE")
 {
 	$id = $_SESSION['id'];
-	$sql = "UPDATE reservation SET Destination='?', Insurance='?', Total='?', Name= '?', Age='?' WHERE id='?'";
+	$sql = "UPDATE reservation SET Destination='$destination', Insurance='$insurance', Total='$total', Name= '$name', Age='$age' WHERE id='$id'";
 	$req = $bdd->prepare($sql);
-	$req->execute (array('id' => $id, 'Destination' => $destination, 'Insurance' => $insurance, 'Total' => $total, 'Name' => $name, 'Age' => $age ));
+	$req->execute ();
 }
 
-// Pour enrejistrer une réservation dans la base de données
+// Save a reservation in the database
 else
 {
 	$sql='INSERT INTO reservation (Destination, Insurance, Total, Name, Age) VALUES (:destination, :insurance, :total, :name, :age)';
@@ -57,5 +57,6 @@ else
 	$stmt->execute();
 }
 
-include 'Confirmation.php' ;
+include 'View/Confirmation.php' ;
 ?>
+

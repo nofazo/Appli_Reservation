@@ -1,11 +1,11 @@
 <?php
 
-include 'Modele.php';
+include 'Modele/Modele.php';
 
 if (isset($_SESSION))
 	session_destroy();
 
-//Connection à la base de données
+//Connection to the database
 $dbname='fazo';
 try
 {
@@ -20,13 +20,13 @@ catch(Exception $e)
 
 $reponse = $bdd->query('SELECT * FROM reservation');
 
-// si on veux consulter la page Admin
+// To visit the admin page
 if (empty($_POST))
 {
-	include 'Admin.php';
+	include 'View/Admin.php';
 }
 
-// Si l'Admin souhaite soit supprimer soit éditer une réservation
+// If Admin wants to delete or edit a reservation
 if (!empty($_POST))
 {
 	while ($donnees = $reponse->fetch())
@@ -40,15 +40,11 @@ if (!empty($_POST))
 			$insurance = $donnees['Insurance'];
 			$destination = $donnees['Destination'];
 
-			
 			$_SESSION['LengthPass'] = 1;
 			$_SESSION['id'] = $donnees['id'];
 			$_SESSION['Edit'] = "TRUE";
 
-			var_dump($_SESSION);
-
-
-			include 'Reservation.php';
+			include 'View/Reservation.php';
 		}
 
 		if(isset($_POST['Suppr'.$donnees['id']]))
@@ -56,7 +52,7 @@ if (!empty($_POST))
 			$id = $donnees['id'];
             $sql = "DELETE FROM reservation WHERE id=$id";
             $bdd->exec($sql);
-            include 'Admin.php';
+            include 'View/Admin.php';
 		}
 	}
 }

@@ -3,7 +3,7 @@ $reservation = unserialize($_SESSION['reservation']);
 
 $_SESSION['dataPass']="";
 
-//enrejistrement des données conçernant tous les passagers dans une variable de session 'dataPass'
+// save data about all passengers in a session variable 'dataPass' (in string)
 foreach ($reservation->GetArray() as $number => $pass) 
 {
 
@@ -11,6 +11,6 @@ foreach ($reservation->GetArray() as $number => $pass)
 
 }
 
-include 'Validation.php';
+include 'View/Validation.php';
 
 ?>

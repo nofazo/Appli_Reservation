@@ -1,12 +1,12 @@
 <?php
-include "Modele.php";
+include "Modele/Modele.php";
 
 if (isset($_SESSION['reservation']))
     $reservation = unserialize($_SESSION['reservation']);
 
 $Msg_Error="";
 
-// création et enrejistrement des passagers dans l'object réservation
+// creation and registration of passengers in the reservation object
 if (isset($_POST['button2']))
 {
 	$Msg_Error = "";
@@ -29,20 +29,20 @@ if (isset($_POST['button2']))
 			if ( $reservation->GetLengthPass() < ($reservation->GetPlace()))
 			{	
 				$_SESSION['LengthPass']= $reservation->GetLengthPass() + 1;
-				include 'Passager.php';
+				include 'View/Passager.php';
 			}
-	
+			
 			else
 			{
 				if ($reservation->Get18Years() == 0)	 
 				{
 					$Msg_Error = "Au moins un des passagers doit être âgé de minimum 18 ans.";
-					include 'Passager.php';
+					include 'View/Passager.php';
 				}
 
 				else 
 				{
-					include 'Controller_Validation.php'; 
+					include 'Controler/Controler_Validation.php'; 
 				}
 			}	
 		}
@@ -50,15 +50,15 @@ if (isset($_POST['button2']))
 		else
 		{
 			$Msg_Error= "Nom et/ou prénom incorrecte(s), veuillez recommencer.";
-			include 'Passager.php';
+			include 'View/Passager.php';
 		}
 	}
 
 
-	// code exécuté pour le reste des passagers lors d'un retour en arrière
+	//code executed for the rest of the passengers when we go back
 	else   
 	{
-		if ($_SESSION['LengthPass'] < $reservation->GetPlace() )  // lengthpass : variable créée pour se repérer lors des retour en arrière
+		if ($_SESSION['LengthPass'] < $reservation->GetPlace() )  // lengthpass : variable created in this case to spot ourself when we go back 
 		{	
 			if (preg_match("#[A-Za-z]+#", $_POST['LastName']) && preg_match("#[A-Za-z]+#", $_POST['FirstName']))
 			{
@@ -70,38 +70,38 @@ if (isset($_POST['button2']))
 				$LastName = $pass->GetLastName();
 				$FirstName = $pass->GetFirstName();
 				$Age = $pass->GetAge();
-				include 'Passager.php';
+				include 'View/Passager.php';
 		    }
 
 		    else
 		    {
 		    	$Msg_Error= "Nom et/ou prénom incorrecte(s), veuillez recommencer.";
-				include 'Passager.php';
+				include 'View/Passager.php';
 		    }		
 		}
 
-		// enrejistre la dernière modification 
+		// save the last change
 		else
 		{
 			$reservation->SetPass($_SESSION['LengthPass']-1, $_POST['LastName'], $_POST['FirstName'], $_POST['Age']); 
 			$_SESSION['reservation'] = serialize($reservation) ;
-			include 'Controller_Validation.php'; 
+			include 'Controler/Controler_Validation.php'; 
 		}
 	}
 }
 
-// code exécuté pour le 1er passager lors d'un retour en arrière
+// code executed for the 1st passenger when going back
 if (isset($_POST['precedent']))   
 {
 	$_SESSION['LengthPass'] = 1;
 	$_SESSION['reservation'] = serialize($reservation) ;
 
-	$pass = $reservation->GetArray()[0];  // 1ere passager
+	$pass = $reservation->GetArray()[0]; 
 	$LastName = $pass->GetLastName();
 	$FirstName = $pass->GetFirstName();
 	$Age = $pass->GetAge();
 
-	include 'Passager.php';
+	include 'View/Passager.php';
 }
 
 ?>

@@ -3,14 +3,14 @@ if (!isset($_SESSION))
 	session_start();
 
 
-if (!empty($_GET['page']) && is_file('Controller_'.$_GET['page'].'.php'))
+if (!empty($_GET['page']) && is_file('Controler/Controler_'.$_GET['page'].'.php'))
 {
-	include 'Controller_'.$_GET['page'].'.php';
+	include 'Controler/Controler_'.$_GET['page'].'.php';
 }
 
 else
 {
-	include 'Accueil.php';
+	include 'View/Accueil.php';
 }
 
 ?>

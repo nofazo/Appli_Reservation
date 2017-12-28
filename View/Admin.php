@@ -64,7 +64,8 @@ $reponse->closeCursor();
 ?>
 
 </table>
-<br />
-    <input type='submit' value='Nouvelle réservation' name='Nouvelle_reservation' onclick="location.href='Accueil.php'">
+</form>
+<form action ="index.php?page=Accueil" method="post" >
+    <input type='submit' value='Nouvelle réservation' name='Nouvelle_Reservation'>
 </form>
 </html>

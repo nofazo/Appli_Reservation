@@ -24,7 +24,9 @@ $reservation = unserialize($_SESSION['reservation']);
 	<p> <font color="red"> <?php echo ($Msg_Error); ?> </font></p>
 
 	<input type="submit" value="Etape suivante" name="button2">
-	<input type="button" value="Annuler la réservation" onclick="location.href='Accueil.php'">
+</form>
+<form action="index.php?page=Accueil" method="post">
+	<input type="submit" value="Annuler la réservation" name="Nouvelle_Reservation">
 </form>
 <form action="index.php?page=Reservation" method="post">
 	<input type="submit" value="Retour à la page précédente" name="precedent" >
