@@ -119,7 +119,7 @@ if(isset($_SESSION['id']))
 		{
 			$nameArray = explode(',', $donnees['Name']);
 			$ageArray = explode(',', $donnees['Age']);
-			$FirstName = ' ';
+			$LastNameArray = explode(',', $donnees['LastName']);
 		}
 		
 	}
@@ -127,7 +127,7 @@ if(isset($_SESSION['id']))
 	//reconstruction of passenger objects
 	for ($i=0; $i < count($nameArray) ; $i++) 
 	{ 
-		$LastName = ' ';
+		$LastName = $LastNameArray[$i];
 		$FirstName = $nameArray[$i];
 		$Age = $ageArray[$i];
 

@@ -175,7 +175,6 @@ class Reservation
 		$passName = array();
 		foreach ($this->array_Pass as $pass) 
 		{
-			//$passName .= $pass->GetFirstName() . ',';
 			array_push($passName, $pass->GetFirstName());
 		}
 		return $passName ;
@@ -190,6 +189,17 @@ class Reservation
 		}
 		return $passAge ;
 	}
+
+	public function GetArrayLastNames()
+	{
+		$passLastName = array();
+		foreach ($this->array_Pass as $pass) 
+		{
+			array_push($passLastName, $pass->GetLastName());
+		}
+		return $passLastName ;
+	}
+
 }
 
 ?>

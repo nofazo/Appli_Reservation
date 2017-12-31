@@ -16,6 +16,7 @@ try
     Insurance TEXT NOT NULL,
     Total INT(20),
     Name TEXT(50),
+    LastName TEXT(50),
     Age TEXT(50)
   )");
 
@@ -31,13 +32,14 @@ $insurance = $reservation->GetInsurance() ;
 $total =   $reservation->GetTotalPrice();
 $name = implode(',',  $reservation->GetArrayNames());
 $age =implode(',', $reservation->GetArrayAges());
+$lastname = implode(',', $reservation->GetArrayLastNames());
 
 
 //In case where the user modifies a reservation using the 'edit' button found in the admin page
 if ($_SESSION['Edit'] === "TRUE")
 {
 	$id = $_SESSION['id'];
-	$sql = "UPDATE reservation SET Destination='$destination', Insurance='$insurance', Total='$total', Name= '$name', Age='$age' WHERE id='$id'";
+	$sql = "UPDATE reservation SET Destination='$destination', Insurance='$insurance', Total='$total', Name= '$name', LastName='$lastname' , Age='$age' WHERE id='$id'";
 	$req = $bdd->prepare($sql);
 	$req->execute ();
 }
@@ -45,13 +47,14 @@ if ($_SESSION['Edit'] === "TRUE")
 // Save a reservation in the database
 else
 {
-	$sql='INSERT INTO reservation (Destination, Insurance, Total, Name, Age) VALUES (:destination, :insurance, :total, :name, :age)';
+	$sql='INSERT INTO reservation (Destination, Insurance, Total, Name,LastName, Age) VALUES (:destination, :insurance, :total, :name, :lastname, :age)';
 	$stmt = $bdd->prepare($sql);
 
 	$stmt->bindParam(':destination', $destination);
 	$stmt->bindParam(':insurance', $insurance);
 	$stmt->bindParam(':total', $total);
 	$stmt->bindParam(':name', $name);
+	$stmt->bindParam(':lastname', $lastname);
 	$stmt->bindParam(':age' , $age);
 
 	$stmt->execute();
